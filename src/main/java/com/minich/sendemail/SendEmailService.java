@@ -16,7 +16,7 @@ public class SendEmailService {
             + "Письмо отправлено автоматически. Благодарим, если уже произвели оплату.<br><br>"
             + "На %s за Вами имеется просроченная задолженность по договору №%s от %sг. на сумму <b>%s BYN</b>. Просим погасить задолженность.<br>"
             + "По вопросам задолженности просим обращаться к Вашему менеджеру.<br><br>"
-            + "С уважением, ООО «ПРИМЕР». Телефон для справок: X-XXX-XXX-XX-X, +375-XX-XXX-XX-XX.";
+            + "С уважением, ООО «ПРИМЕР». Телефон для справок: X-XXX-XXX-XX-X, XXX-XX-XXX-XX-XX.";
     public static final String EMAIL_FROM = "example@email.com";
     public static final String APP_PASSWORD = "<app-password>";
     public static final String EMAIL_FROM_TITLE = "OOO «ПРИМЕР»";
@@ -31,7 +31,7 @@ public class SendEmailService {
     private  static void send(String toEmail, String message) throws MessagingException, UnsupportedEncodingException {
         Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(EMAIL_FROM, APP_PASSWORD); //
+                return new PasswordAuthentication(EMAIL_FROM, APP_PASSWORD);
             }
         };
         Session session = Session.getInstance(getSMTPProperties(), auth);
@@ -56,7 +56,6 @@ public class SendEmailService {
 
     private static Properties getSMTPProperties() {
         Properties defaultProps = new Properties();
-        // sets default properties
         defaultProps.setProperty("mail.smtp.host", "smtp.yandex.ru");
         defaultProps.setProperty("mail.smtp.port", "465");
         defaultProps.setProperty("mail.user", EMAIL_FROM);
